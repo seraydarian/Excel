@@ -1,0 +1,74 @@
+
+Sub makefolder()
+On Error GoTo errorTrap:
+MyDate = Trim(VBA.Format(Now(), "MM-DD-YY"))
+Application.DisplayAlerts = False
+MkDir "C:\Reports\Friday Reports\" & MyDate
+ActiveWorkbook.SaveAs Filename:="c:\AAAA & " \ " & Filename"
+Exit Sub
+errorTrap:
+If Err.Number = 75 Then
+Resume Next
+End If
+
+MsgBox Err.Number & " " & Err.Description
+End Sub
+/////////////////////////////////////////////////
+
+
+Sub ChooseFolderLocation()
+Dim flder As FileDialog
+Dim foldername As String
+Set flder = Application.FileDialog(msoFileDialogFolderPicker)
+With flder
+.Title = "Select the folder containing data"
+.AllowMultiSelect = True
+
+If (.Show & lt & gt - 1) Then
+
+
+GoTo NextCode
+foldername = .SelectedItems(1)
+End If
+
+End With
+NextCode:
+GetFolder = foldername
+Set flder = Nothing
+
+
+End Sub
+//////////////////////////
+
+Function GetFolder() As String
+    Dim fldr As FileDialog
+    Dim sItem As String
+    Set fldr = Application.FileDialog(msoFileDialogFolderPicker)
+    With fldr
+        .Title = "Select a Folder"
+        .AllowMultiSelect = False
+        .InitialFileName = Application.DefaultFilePath
+        If .Show <> -1 Then GoTo NextCode
+        sItem = .SelectedItems(1)
+    End With
+NextCode:
+    GetFolder = sItem
+    Set fldr = Nothing
+End Function
+
+
+////////////////////////////////////////
+Sub makefolder()
+On Error GoTo errorTrap:
+myDate = Trim(VBA.Format(Now(), "MM-DD-YY"))
+Application.DisplayAlerts = False
+MkDir "C:\Reports\Friday Reports\" & myDate
+ActiveWorkbook.SaveAs Filename:="c:\AAAA & " \ " & Filename"
+Exit Sub
+errorTrap:
+If Err.Number = 75 Then
+Resume Next
+End If
+
+MsgBox Err.Number & " " & Err.Description
+End Sub
