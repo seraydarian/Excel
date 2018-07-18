@@ -49,3 +49,27 @@ TempFileName = "VBAP-" & Temp & ".XLSX"
 
 
 End Sub
+
+Sub CloseAllExcel()
+
+    Dim xlApp As Excel.Application
+    
+    Do
+        On Error Resume Next
+        Set xlApp = GetObject(, "Excel.Application")
+        If Err <> 0 Then Exit Do '-- no more Excel instant
+        On Error GoTo CloseAllExcel_Error
+        xlApp.DisplayAlerts = False
+        xlApp.Quit
+    Loop
+    Set xlApp = Nothing
+    Exit Sub
+    
+CloseAllExcel_Error:
+    MsgBox Err.Number & ": " & Err.Description
+
+
+
+
+End Sub
+
