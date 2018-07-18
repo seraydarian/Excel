@@ -1,0 +1,9 @@
+Public Sub createWB()
+    Set newbook = Workbooks.Add
+    With newbook
+        .Title = "This title is displayed in Info > Properties"
+        .Subject = "This subject is displayed in Info > Properties"
+        .SaveAs Filename:="C:\Users\10113599\Desktop\TopDown-Report" & myDate & "\Report.xlsx"
+        .Close
+    End With
+End Sub
