@@ -1,0 +1,51 @@
+Option Compare Database
+
+
+Public Sub CloseExcel()
+
+Dim xlApp As Excel.Application
+Dim xlWB As Excel.Workbook
+    Set xlApp = New Excel.Application
+Dim xlSh As Excel.Worksheet
+    'Dim DskTp as String
+    
+Dim Temp As String
+Dim TempFileName As String
+'Dim wkb As Workbook
+
+Temp = Format(Now(), "mm-dd-yy")
+TempFileName = "VBAP-" & Temp & ".XLSX"
+    
+    
+    myDate = Trim(VBA.Format(Now(), "MM-DD-YY"))
+
+    'DskTp = "C:\"
+    Set xlWB = xlApp.Workbooks.Open("C:\Users\10113599\Desktop\LineFill-" & myDate & "\" & TempFileName, , False)
+    Set xlSh = xlWB.Sheets("Sheet1")
+
+    With xlSh
+        .Cells.Font.Name = "Trebuchet MS"
+        .Range("1:1").Font.Bold = True
+        .Range("A1").HorizontalAlignment = xlCenter
+        .Range("A:A").EntireColumn.AutoFit
+    End With
+    
+    
+    xlWB.Application.Visible = True
+    xlWB.Windows(1).Visible = True
+    xlWB.Worksheets(1).Activate
+    xlWB.Save
+    xlWB.Close
+    xlApp.Quit
+    
+    
+    
+
+    'xlWB.Close True
+    Set xlWB = Nothing
+    xlApp.Quit
+    Set xlApp = Nothing
+
+
+
+End Sub
