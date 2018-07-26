@@ -1,0 +1,19 @@
+Excel
+
+'Count the number of times a Material or value appaear in a column
+=COUNTIF(A:A,A2)
+
+'Count down the number appear in the column
+'3
+'2
+'1
+
+=COUNTIF(A2:A100,A2:A100)
+
+
+Excel multiple lines in one cell
+hold down the Alt button and press Enter whenever you want to make a new line.
+
+
+VBA:
+Ecs ( key) 	Two X ( hit twice) to break program
